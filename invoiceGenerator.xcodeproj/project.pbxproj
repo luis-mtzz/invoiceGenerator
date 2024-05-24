@@ -15,6 +15,7 @@
 		A053BFBC2C011A25006ED371 /* invoiceGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053BFBB2C011A25006ED371 /* invoiceGeneratorTests.swift */; };
 		A053BFC62C011A25006ED371 /* invoiceGeneratorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053BFC52C011A25006ED371 /* invoiceGeneratorUITests.swift */; };
 		A053BFC82C011A25006ED371 /* invoiceGeneratorUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053BFC72C011A25006ED371 /* invoiceGeneratorUITestsLaunchTests.swift */; };
+		A053BFD52C012E6C006ED371 /* InvoiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053BFD42C012E6C006ED371 /* InvoiceDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A053BFC12C011A25006ED371 /* invoiceGeneratorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = invoiceGeneratorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A053BFC52C011A25006ED371 /* invoiceGeneratorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = invoiceGeneratorUITests.swift; sourceTree = "<group>"; };
 		A053BFC72C011A25006ED371 /* invoiceGeneratorUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = invoiceGeneratorUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A053BFD42C012E6C006ED371 /* InvoiceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				A053BFA72C011A24006ED371 /* invoiceGeneratorApp.swift */,
 				A053BFA92C011A24006ED371 /* ContentView.swift */,
 				A053BFAB2C011A24006ED371 /* Item.swift */,
+				A053BFD42C012E6C006ED371 /* InvoiceDetailView.swift */,
 				A053BFAD2C011A25006ED371 /* Assets.xcassets */,
 				A053BFAF2C011A25006ED371 /* invoiceGenerator.entitlements */,
 				A053BFB02C011A25006ED371 /* Preview Content */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A053BFAA2C011A24006ED371 /* ContentView.swift in Sources */,
+				A053BFD52C012E6C006ED371 /* InvoiceDetailView.swift in Sources */,
 				A053BFAC2C011A24006ED371 /* Item.swift in Sources */,
 				A053BFA82C011A24006ED371 /* invoiceGeneratorApp.swift in Sources */,
 			);

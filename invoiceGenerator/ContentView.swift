@@ -12,42 +12,83 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
 
+    @State private var isShowingAddItemSheet = false
+    @State private var newSeller = ""
+    @State private var newBuyer = ""
+    @State private var newItem = ""
+    @State private var newPrice: Float = 0.0
+
     var body: some View {
-        NavigationSplitView {
+        NavigationView {
             List {
                 ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                    NavigationLink(destination: InvoiceDetailView(item: item)) {
+                        VStack(alignment: .leading) {
+                            Text(item.timestamp, format: Date.FormatStyle(date: .numeric))
+                            Text("Buyer: \(item.buyer)")
+                            Text("Item: \(item.item)")
+                        }
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
+            .navigationTitle("Invoices")
             .toolbar {
-#if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
-#endif
                 ToolbarItem {
-                    Button(action: addItem) {
+                    Button(action: {
+                        isShowingAddItemSheet = true
+                    }) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
             }
-        } detail: {
-            Text("Select an item")
+        }
+        .sheet(isPresented: $isShowingAddItemSheet) {
+            VStack {
+                TextField("Seller", text: $newSeller)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+
+                TextField("Buyer", text: $newBuyer)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+
+                TextField("Item", text: $newItem)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+
+                TextField("Price", value: $newPrice, format: .number)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+
+                Spacer()
+
+                Button(action: saveNewItem) {
+                    Text("Save")
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .padding()
+            }
+            .padding()
         }
     }
 
-    private func addItem() {
+    private func saveNewItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date())
+            let newItem = Item(timestamp: Date(), seller: newSeller, buyer: newBuyer, item: newItem, price: newPrice)
             modelContext.insert(newItem)
+            newSeller = ""
+            newBuyer = ""
+            self.newItem = ""
+            newPrice = 0.0
+            isShowingAddItemSheet = false
         }
     }
 
